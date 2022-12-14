@@ -12,18 +12,18 @@ import com.hexaware.appointmentschedulingsystem.repository.AppointmentRepository
 public class AppointmentServiceImpl implements AppointmentService{
 	
 	@Autowired
-	AppointmentRepository appointmentRepo;
+	private AppointmentRepository appointmentRepo;
 
 	@Override
 	public List<Appointment> getAllAppointments() {
 		return appointmentRepo.findAll();
 	}
 
-	@Override
-	public Optional<Appointment> getAppointmentById(Long userId) {
-		
-		return appointmentRepo.findById(userId);
-	}
+//	@Override
+//	public Optional<Appointment> getAppointmentById(Long appointmentId) {
+//		
+//		return appointmentRepo.findById(appointmentId);
+//	}
 
 	@Override
 	public Appointment saveAppointment(Appointment appointment) {
@@ -32,9 +32,9 @@ public class AppointmentServiceImpl implements AppointmentService{
 	}
 
 	@Override
-	public void deleteAppointmentById(Long appointment_id) {
+	public void deleteAppointmentById(Long appointmentId) {
 		
-		appointmentRepo.deleteById(appointment_id);
+		appointmentRepo.deleteById(appointmentId);
 	}
 
 	@Override
@@ -53,6 +53,12 @@ public class AppointmentServiceImpl implements AppointmentService{
 	public List<Appointment> findAppointmentByDoctorId(Long doctorId) {
 		
 		return appointmentRepo.findAppointmentByDoctorId(doctorId);
+	}
+
+	@Override
+	public Optional<Appointment> getAppointmentById(Long appointmentId) {
+		// TODO Auto-generated method stub
+		return appointmentRepo.findById(appointmentId);
 	}
 
 	

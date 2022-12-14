@@ -33,7 +33,7 @@ import io.swagger.annotations.ApiResponses;
 public class PatientController {
 	
 	@Autowired
-	PatientService patientService;
+	private PatientService patientService;
 	
 	
 	@GetMapping("/getallpatient")
@@ -85,8 +85,8 @@ public class PatientController {
 	@ApiOperation(value = "Get an patient by id")
 	Optional<Patient> findPatientById(
 			@ApiParam (value="returns the patient with id",required = true)
-			@PathVariable("id") Long patient_id){
-		return patientService.findPatientById(patient_id);
+			@PathVariable("id") Long userId){
+		return patientService.findPatientById(userId);
 	}
 	
 //	@GetMapping("/getpatient/{userid}")
@@ -104,7 +104,7 @@ public class PatientController {
 			@PathVariable("id") Long userId) throws Exception {
 		Patient existingPatient =  patientService.findPatientById(userId)
 				.orElseThrow(() -> new Exception("Patient not found with id" + userId));
-		existingPatient.setUserId(patient.getUserId());
+//		existingPatient.setUserId(patient.getUserId());
 		existingPatient.setUserName(patient.getUserName());
 		existingPatient.setAddress(patient.getAddress());
 		existingPatient.setPassword(patient.getPassword());

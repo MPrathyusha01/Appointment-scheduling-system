@@ -15,7 +15,7 @@ import com.hexaware.appointmentschedulingsystem.repository.PatientRepository;
 public class PatientServiceImpl implements PatientService{
 	
 	@Autowired
-	PatientRepository patientRepo;
+	private PatientRepository patientRepo;
 
 	@Override
 	public List<Patient> findAll() {

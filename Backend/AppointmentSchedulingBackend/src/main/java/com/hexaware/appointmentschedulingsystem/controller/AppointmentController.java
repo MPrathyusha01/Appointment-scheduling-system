@@ -34,7 +34,7 @@ import io.swagger.annotations.ApiResponses;
 public class AppointmentController {
 	
 	@Autowired
-	AppointmentService appointmentService;
+	private AppointmentService appointmentService;
 	
 	@GetMapping("/viewallappointment")
 	@ApiOperation(value = "To view all appointments", response = List.class)
@@ -61,8 +61,8 @@ public class AppointmentController {
 	@DeleteMapping("/deleteappointmentbyid/{id}")
 	@ApiOperation(value = "deletes a Appointment")
 	void deleteAppointment(
-			@PathVariable("id") Long appointment_id) {
-		appointmentService.deleteAppointmentById(appointment_id);
+			@PathVariable("id") Long appointmentId) {
+		appointmentService.deleteAppointmentById(appointmentId);
 	}
 	
 	
@@ -84,11 +84,12 @@ public class AppointmentController {
 			@PathVariable("id") Long appointmentId) throws Exception {
 		Appointment existingAppointment =  appointmentService.getAppointmentById(appointmentId)
 				.orElseThrow(() -> new Exception("Appointment not found with id" + appointmentId));
-		existingAppointment.setAppointmentId(appointment.getAppointmentId());
+//		existingAppointment.setAppointmentId(appointment.getAppointmentId());
 		existingAppointment.setAppointmentDate(appointment.getAppointmentDate());
 		existingAppointment.setAppointmentStatus(appointment.getAppointmentStatus());
 		existingAppointment.setUserId(appointment.getUserId());
 		existingAppointment.setDoctorId(appointment.getDoctorId());
+		existingAppointment.setFee(appointment.getFee());
 		
 		return appointmentService.updateAppointment(existingAppointment);
 	}

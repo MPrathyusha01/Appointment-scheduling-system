@@ -14,6 +14,7 @@ public interface AppointmentService {
 	public Appointment updateAppointment(Appointment appointment);
 	public List<Appointment> getAllAppointments();
 	public Optional<Appointment> getAppointmentById(Long appointmentId);
+//	public Optional<Appointment> getAppointmentById(Long appointmentId);
 	public Optional<List<Appointment>> findAppointmentByUserId(Long userId);
 	//public List<Appointment> updateAppointmentStatusByUserId(Long userId, Long appointmentId) throws Exception;
 	public List<Appointment> findAppointmentByDoctorId(Long doctorId);
